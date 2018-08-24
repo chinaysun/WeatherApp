@@ -39,11 +39,21 @@ extension Content {
     }
     
     var countries: [Country] {
-        return weatherData?.compactMap { $0.country } ?? []
+        return (weatherData?.compactMap { $0.country } ?? []).uniqueElements
+            .sorted(by: { (left, right) -> Bool in
+                left.name < right.name
+            })
+    }
+    
+    var weatherConditions: [String] {
+        return (weatherData?.compactMap { $0.condition } ?? []).uniqueElements
+            .sorted(by: { (left, right) -> Bool in
+                left < right
+            })
     }
     
     var sports: [Sport] {
-        return weatherData?.compactMap { $0.sport } ?? []
+        return (weatherData?.compactMap { $0.sport } ?? []).uniqueElements
     }
     
 }

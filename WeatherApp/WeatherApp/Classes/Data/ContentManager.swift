@@ -11,6 +11,7 @@ import RxSwift
 protocol ContentManagerType: ApiClientInjected {
     var content: BehaviorSubject<Content?> { get }
     var update: Single<Bool> { get }
+    var finishUpdated: PublishSubject<Void> { get }
     
     func validate(content: Content) -> Bool
 }
@@ -26,10 +27,13 @@ extension AppData {
                 .do(onSuccess: { [weak self] content, _ in
                     guard self?.validate(content: content) == true else { return }
                     self?.content.onNext(content)
+                    self?.finishUpdated.onNext(())
                 })
                 .map { _ in true }
     
         }()
+        
+        lazy var finishUpdated: PublishSubject<Void> = PublishSubject()
         
         // MARK: - Functions
         
