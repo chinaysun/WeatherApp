@@ -51,13 +51,13 @@ class HomeViewController: UIViewController {
     private func setupRefreshController() {
         
         // Note: - Refresh Controller
-        let color = UIColor(red: 93/255, green: 188/255, blue: 210/255, alpha: 1.0)
         let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15),
-            NSAttributedStringKey.foregroundColor: color
+            NSAttributedStringKey.font: Theme.Font.homeRefreshIndicatorTitle ,
+            NSAttributedStringKey.foregroundColor: Theme.Color.homeRefreshIndicatorTitle
         ]
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Weather Data...", attributes: attributes)
-        refreshControl.tintColor = color
+        refreshControl.attributedTitle = NSAttributedString(string: "Home.Refresh.Fetching.Indicator".localized,
+                                                            attributes: attributes)
+        refreshControl.tintColor = Theme.Color.homeRefreshThinColor
         
         weatherTableView.refreshControl = refreshControl
     }
@@ -131,11 +131,14 @@ class HomeViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .skip(1)
             .subscribe(onNext: { [weak self] _ in
-                let alertController = UIAlertController(title: "Notification",
-                                                        message: "Weather data have been updated",
+                let alertController = UIAlertController(title: "Home.Refresh.Alert.Title".localized,
+                                                        message: "Home.Refresh.Alert.Message".localized,
                                                         preferredStyle: .alert)
                 
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil )
+                let action = UIAlertAction(title: "Home.Refresh.Alert.Action.Title".localized,
+                                           style: .cancel,
+                                           handler: nil )
+                
                 alertController.addAction(action)
                 
                 self?.present(alertController, animated: true) { self?.refreshControl.endRefreshing() }

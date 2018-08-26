@@ -1,5 +1,5 @@
 //
-//  Utilities.swift
+//  UIColor+ToImage.swift
 //  WeatherApp
 //
 //  Created by Yu Sun on 24/8/18.

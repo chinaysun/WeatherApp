@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Yu Sun on 26/8/18.
+  Copyright © 2018 Yu Sun. All rights reserved.
+*/
+
+
+// MARK: - Home Refresh Alert
+
+"Home.Refresh.Fetching.Indicator" = "Fetching Weather Data...";
+"Home.Refresh.Alert.Title" = "Notification";
+"Home.Refresh.Alert.Message" = "Weather data have been updated";
+"Home.Refresh.Alert.Action.Title" = "Ok";

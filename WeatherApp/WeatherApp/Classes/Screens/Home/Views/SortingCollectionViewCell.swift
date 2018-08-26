@@ -21,8 +21,8 @@ class SortingCollectionViewCell: UICollectionViewCell {
         optionTitleLabel.text = option.title
         selectedView.isHidden = !isSelected
         
-        optionTitleLabel.font = isSelected ? UIFont.boldSystemFont(ofSize: 15) : UIFont.systemFont(ofSize: 15)
-        optionTitleLabel.textColor = isSelected ? UIColor.darkGray : UIColor.lightGray
+        optionTitleLabel.font = isSelected ? Theme.Font.homeFilterOptionSelected : Theme.Font.homeFilterOptionUnselected
+        optionTitleLabel.textColor = isSelected ? Theme.Color.homeFilterOptionSelected : Theme.Color.homeFilterOptionUnselected
     }
     
     override func prepareForReuse() {
